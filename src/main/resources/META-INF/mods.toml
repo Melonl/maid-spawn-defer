@@ -1,0 +1,32 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="maid_spawn_defer"
+version="2.1.1"
+displayName="Maid Spawn Defer (Entity Section CME Fix)"
+description="Fixes a generic server-side ConcurrentModificationException in entity section iteration. Vanilla PersistentEntitySectionManager#updateChunkStatus iterates the live EntitySection storage while its callbacks may add, remove or teleport entities; any mod doing so mid-iteration throws CME and kills the server tick, typically right after clicking respawn. This mod redirects the section stream to a snapshot, so modifications during iteration are safe. It does not change spawn behaviour, tick order or world data, and can be removed at any time."
+authors="Melonl"
+
+[[dependencies.maid_spawn_defer]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.maid_spawn_defer]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="NONE"
+side="BOTH"
+
+# Optional: the pack this was written for. The fix itself is generic.
+[[dependencies.maid_spawn_defer]]
+modId="callresponse"
+mandatory=false
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"
